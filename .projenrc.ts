@@ -7,6 +7,9 @@ const project = new monorepo.MonorepoTsProject({
   devDeps: ["@aws/pdk"],
   name: "pnpm-pdk-sample",
   packageManager: javascript.NodePackageManager.PNPM,
+  pnpmVersion: "8",
+  github: true,
+  depsUpgrade: false,
   projenrcTs: true,
 });
 
