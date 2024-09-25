@@ -2,7 +2,6 @@
   "name": "pnpm-pdk-sample",
   "scripts": {
     "build": "pnpm exec projen build",
-    "bump": "pnpm exec projen bump",
     "clobber": "pnpm exec projen clobber",
     "compile": "pnpm exec projen compile",
     "default": "pnpm exec projen default",
@@ -12,10 +11,8 @@
     "package": "pnpm exec projen package",
     "post-compile": "pnpm exec projen post-compile",
     "pre-compile": "pnpm exec projen pre-compile",
-    "release": "pnpm exec projen release",
     "run-many": "pnpm exec projen run-many",
     "test": "pnpm exec projen test",
-    "unbump": "pnpm exec projen unbump",
     "upgrade-deps": "pnpm exec projen upgrade-deps",
     "watch": "pnpm exec projen watch",
     "install:ci": "pnpm exec projen install:ci",
@@ -36,7 +33,6 @@
     "nx": "19.0.0",
     "prettier": "^3.3.3",
     "projen": "^0.82.8",
-    "standard-version": "^9",
     "syncpack": "^13",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
