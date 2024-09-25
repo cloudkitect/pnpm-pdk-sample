@@ -9,6 +9,8 @@ const project = new monorepo.MonorepoTsProject({
   packageManager: javascript.NodePackageManager.PNPM,
   pnpmVersion: "8",
   github: true,
+  release: true,
+  releaseToNpm: true,
   depsUpgrade: false,
   projenrcTs: true,
 });
