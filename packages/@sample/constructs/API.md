@@ -1,21 +1,33 @@
 # API Reference <a name="API Reference" id="api-reference"></a>
 
+## Constructs <a name="Constructs" id="Constructs"></a>
 
+### Website <a name="Website" id="@sample/constructs.Website"></a>
 
-## Classes <a name="Classes" id="Classes"></a>
-
-### Hello <a name="Hello" id="@sample/constructs.Hello"></a>
-
-#### Initializers <a name="Initializers" id="@sample/constructs.Hello.Initializer"></a>
+#### Initializers <a name="Initializers" id="@sample/constructs.Website.Initializer"></a>
 
 ```typescript
-import { Hello } from '@sample/constructs'
+import { Website } from '@sample/constructs'
 
-new Hello()
+new Website(scope: Construct, id: string)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@sample/constructs.Website.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@sample/constructs.Website.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@sample/constructs.Website.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@sample/constructs.Website.Initializer.parameter.id"></a>
+
+- *Type:* string
 
 ---
 
@@ -23,15 +35,77 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@sample/constructs.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#@sample/constructs.Website.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="@sample/constructs.Hello.sayHello"></a>
+##### `toString` <a name="toString" id="@sample/constructs.Website.toString"></a>
 
 ```typescript
-public sayHello(): string
+public toString(): string
 ```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@sample/constructs.Website.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@sample/constructs.Website.isConstruct"></a>
+
+```typescript
+import { Website } from '@sample/constructs'
+
+Website.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@sample/constructs.Website.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@sample/constructs.Website.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@sample/constructs.Website.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
 
 
 
