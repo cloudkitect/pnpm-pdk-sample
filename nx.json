@@ -29,6 +29,11 @@
       "dependsOn": [
         "^build"
       ]
+    },
+    "release": {
+      "dependsOn": [
+        "^release"
+      ]
     }
   },
   "tasksRunnerOptions": {

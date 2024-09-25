@@ -1,6 +1,7 @@
 import { javascript } from "projen";
 import { monorepo } from "@aws/pdk";
 import {AwsCdkConstructLibrary} from "projen/lib/awscdk";
+import {NpmAccess} from "projen/lib/javascript";
 
 
 const project = new monorepo.MonorepoTsProject({
@@ -11,6 +12,8 @@ const project = new monorepo.MonorepoTsProject({
   github: true,
   release: true,
   releaseToNpm: true,
+  npmAccess: NpmAccess.PUBLIC,
+  npmProvenance: false,
   depsUpgrade: false,
   projenrcTs: true,
 });
@@ -29,4 +32,8 @@ const constructs = new AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/cloudkitect/sample',
 });
 constructs.synth();
+
+project.nx.setTargetDefault("release", {
+  dependsOn: ["^release"],
+});
 project.synth();
