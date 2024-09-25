@@ -10,6 +10,7 @@ const project = new monorepo.MonorepoTsProject({
   pnpmVersion: "8",
   github: true,
   release: true,
+  releaseToNpm: true,
   depsUpgrade: false,
   projenrcTs: true,
 });
