@@ -29,9 +29,26 @@ const constructs = new AwsCdkConstructLibrary({
   constructsVersion: '10.3.0',
   jsiiVersion: '~5.5.0',
   packageManager: project.package.packageManager,
-  repositoryUrl: 'https://github.com/cloudkitect/sample',
+  repositoryUrl: 'https://github.com/cloudkitect/pnpm-pdk-sample',
 });
 constructs.synth();
+
+const patterns = new AwsCdkConstructLibrary({
+  defaultReleaseBranch: 'main',
+  name: `@sample/patterns`,
+  outdir: `packages/@sample/patterns`,
+  cdkVersion: '2.160.0',
+  author: 'CloudKitect Inc',
+  authorAddress: 'support@cloudkitect.com',
+  parent: project,
+  constructsVersion: '10.3.0',
+  jsiiVersion: '~5.5.0',
+  packageManager: project.package.packageManager,
+  repositoryUrl: 'https://github.com/cloudkitect/pnpm-pdk-sample',
+});
+patterns.addPeerDeps('@sample/constructs')
+
+patterns.synth();
 
 project.nx.setTargetDefault("release", {
   dependsOn: ["^release"],

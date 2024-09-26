@@ -2,3 +2,4 @@
 
 packages:
   - packages/@sample/constructs
+  - packages/@sample/patterns

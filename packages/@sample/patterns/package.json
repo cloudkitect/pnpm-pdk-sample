@@ -1,5 +1,5 @@
 {
-  "name": "@sample/constructs",
+  "name": "@sample/patterns",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudkitect/pnpm-pdk-sample"
@@ -28,6 +28,7 @@
     "organization": false
   },
   "devDependencies": {
+    "@sample/constructs": "^0.0.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^7",
@@ -48,6 +49,7 @@
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
+    "@sample/constructs": "^0.0.0",
     "aws-cdk-lib": "^2.160.0",
     "constructs": "^10.3.0"
   },
