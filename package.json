@@ -1,5 +1,5 @@
 {
-  "name": "pnpm-pdk-sample",
+  "name": "@cloudkitect/pnpm-pdk-sample",
   "scripts": {
     "build": "pnpm exec projen build",
     "bump": "pnpm exec projen bump",
@@ -63,8 +63,7 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
-    "registry": "https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/",
-    "access": "public"
+    "registry": "https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/"
   },
   "version": "0.0.0",
   "types": "lib/index.d.ts",
