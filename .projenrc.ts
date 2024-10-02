@@ -32,6 +32,8 @@ const constructs = new AwsCdkConstructLibrary({
   packageManager: project.package.packageManager,
   repositoryUrl: 'https://github.com/cloudkitect/pnpm-pdk-sample',
 });
+const task = constructs.tasks.tryFind('package')
+task?.removeStep(0)
 constructs.synth();
 
 const patterns = new AwsCdkConstructLibrary({
@@ -55,7 +57,7 @@ project.subprojects
     .filter((p) => p instanceof AwsCdkConstructLibrary)
     .forEach((p) => {
       const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
-      p.packageTask.exec(`ls dist && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
+      p.packageTask.exec(`npx projen package-all && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
     });
 
 // project.nx.setTargetDefault("release", {
