@@ -63,7 +63,7 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
-    "registry": "https://cloudkitect-193858265520.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/",
+    "registry": "https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/",
     "access": "public"
   },
   "version": "0.0.0",
