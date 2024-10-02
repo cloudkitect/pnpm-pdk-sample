@@ -8,7 +8,6 @@ export class Website extends Construct {
 
     new Bucket(this, 'Bucket', {
       versioned: true,
-      enforceSSL: true,
     });
 
   }
