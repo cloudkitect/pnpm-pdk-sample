@@ -85,7 +85,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "npx projen package-all && mkdir -p ../../../dist/js && cp -r dist/js/*.tgz ../../../dist/js"
+          "exec": "rm -fr dist && npx projen package-all && mkdir -p ../../../dist/js && cp -r dist/js/*.tgz ../../../dist/js"
         }
       ]
     },
