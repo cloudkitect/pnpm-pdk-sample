@@ -85,7 +85,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "if [ ! -z ${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi"
+          "exec": "npx projen package-all && mkdir -p ../../../dist/js && cp -r dist/js/*.tgz ../../../dist/js"
         }
       ]
     },

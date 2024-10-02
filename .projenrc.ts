@@ -2,6 +2,7 @@ import { javascript } from "projen";
 import { monorepo } from "@aws/pdk";
 import {AwsCdkConstructLibrary} from "projen/lib/awscdk";
 import {NpmAccess} from "projen/lib/javascript";
+import path from "node:path";
 
 
 const project = new monorepo.MonorepoTsProject({
@@ -31,6 +32,8 @@ const constructs = new AwsCdkConstructLibrary({
   packageManager: project.package.packageManager,
   repositoryUrl: 'https://github.com/cloudkitect/pnpm-pdk-sample',
 });
+const task = constructs.tasks.tryFind('package')
+task?.removeStep(0)
 constructs.synth();
 
 const patterns = new AwsCdkConstructLibrary({
@@ -50,7 +53,15 @@ patterns.addPeerDeps('@sample/constructs')
 
 patterns.synth();
 
-project.nx.setTargetDefault("release", {
-  dependsOn: ["^release"],
-});
+project.subprojects
+    .filter((p) => p instanceof AwsCdkConstructLibrary)
+    .forEach((p) => {
+      const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
+      p.packageTask.exec(`npx projen package-all && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
+    });
+
+// project.nx.setTargetDefault("release", {
+//   dependsOn: ["^release"],
+// });
+
 project.synth();
