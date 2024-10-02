@@ -2,6 +2,7 @@ import { javascript } from "projen";
 import { monorepo } from "@aws/pdk";
 import {AwsCdkConstructLibrary} from "projen/lib/awscdk";
 import {NpmAccess} from "projen/lib/javascript";
+import path from "node:path";
 
 
 const project = new monorepo.MonorepoTsProject({
@@ -50,7 +51,11 @@ patterns.addPeerDeps('@sample/constructs')
 
 patterns.synth();
 
-project.nx.setTargetDefault("release", {
-  dependsOn: ["^release"],
-});
+project.subprojects
+    .filter((p) => p instanceof AwsCdkConstructLibrary)
+    .forEach((p) => {
+      const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
+      p.packageTask.exec(`mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
+    });
+
 project.synth();
