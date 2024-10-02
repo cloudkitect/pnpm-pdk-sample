@@ -1,8 +1,8 @@
 import { javascript } from "projen";
 import { monorepo } from "@aws/pdk";
 import {AwsCdkConstructLibrary} from "projen/lib/awscdk";
-import {NpmAccess} from "projen/lib/javascript";
 import path from "node:path";
+import {CodeArtifactAuthProvider} from "projen/lib/release";
 
 
 const project = new monorepo.MonorepoTsProject({
@@ -13,10 +13,13 @@ const project = new monorepo.MonorepoTsProject({
   github: true,
   release: true,
   releaseToNpm: true,
-  npmAccess: NpmAccess.PUBLIC,
-  npmProvenance: false,
   depsUpgrade: false,
   projenrcTs: true,
+  npmRegistryUrl: 'https://cloudkitect-193858265520.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/',
+  codeArtifactOptions: {
+    roleToAssume: 'arn:aws:iam::053336355397:role/GithubRole-RepositoryPublisherRole-Ou627tXHJL0P',
+    authProvider: CodeArtifactAuthProvider.GITHUB_OIDC
+  },
 });
 
 const constructs = new AwsCdkConstructLibrary({
@@ -49,6 +52,8 @@ const patterns = new AwsCdkConstructLibrary({
   packageManager: project.package.packageManager,
   repositoryUrl: 'https://github.com/cloudkitect/pnpm-pdk-sample',
 });
+const task2 = patterns.tasks.tryFind('package')
+task2?.removeStep(0)
 patterns.addPeerDeps('@sample/constructs')
 
 patterns.synth();
@@ -59,9 +64,5 @@ project.subprojects
       const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
       p.packageTask.exec(`npx projen package-all && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
     });
-
-// project.nx.setTargetDefault("release", {
-//   dependsOn: ["^release"],
-// });
 
 project.synth();
