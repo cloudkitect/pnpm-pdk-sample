@@ -1,8 +1,9 @@
-import { javascript } from "projen";
-import { monorepo } from "@aws/pdk";
+import {javascript} from "projen";
+import {monorepo} from "@aws/pdk";
 import {AwsCdkConstructLibrary} from "projen/lib/awscdk";
 import path from "node:path";
 import {CodeArtifactAuthProvider} from "projen/lib/release";
+import {NpmAccess} from "projen/lib/javascript";
 
 
 const project = new monorepo.MonorepoTsProject({
@@ -15,6 +16,7 @@ const project = new monorepo.MonorepoTsProject({
   releaseToNpm: true,
   depsUpgrade: false,
   projenrcTs: true,
+  npmAccess: NpmAccess.PUBLIC,
   npmRegistryUrl: 'https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/',
   codeArtifactOptions: {
     roleToAssume: 'arn:aws:iam::053336355397:role/GithubRole-RepositoryPublisherRole-Ou627tXHJL0P',
