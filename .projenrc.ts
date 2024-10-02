@@ -58,4 +58,8 @@ project.subprojects
       p.packageTask.exec(`mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
     });
 
+// project.nx.setTargetDefault("release", {
+//   dependsOn: ["^release"],
+// });
+
 project.synth();
