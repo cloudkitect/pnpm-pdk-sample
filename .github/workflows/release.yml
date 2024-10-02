@@ -87,6 +87,7 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
@@ -101,9 +102,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Configure AWS Credentials via GitHub OIDC Provider
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::053336355397:role/GithubRole-RepositoryPublisherRole-Ou627tXHJL0P
+          aws-region: us-east-1
       - name: Release
         env:
           NPM_DIST_TAG: latest
-          NPM_REGISTRY: registry.npmjs.org
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_REGISTRY: cloudkitect-193858265520.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/
+          NPM_CONFIG_PROVENANCE: "true"
         run: npx -p publib@latest publib-npm
