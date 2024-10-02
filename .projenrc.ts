@@ -55,7 +55,7 @@ project.subprojects
     .filter((p) => p instanceof AwsCdkConstructLibrary)
     .forEach((p) => {
       const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
-      p.packageTask.exec(`ls && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
+      p.packageTask.exec(`ls dist mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
     });
 
 // project.nx.setTargetDefault("release", {
