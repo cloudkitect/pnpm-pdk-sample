@@ -62,7 +62,7 @@ project.subprojects
     .filter((p) => p instanceof AwsCdkConstructLibrary)
     .forEach((p) => {
       const distDir = `${path.relative(p.outdir, project.outdir)}/dist/js`;
-      p.packageTask.exec(`npx projen package-all && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
+      p.packageTask.exec(`rm -fr dist && npx projen package-all && mkdir -p ${distDir} && cp -r dist/js/*.tgz ${distDir}`);
     });
 
 project.synth();
