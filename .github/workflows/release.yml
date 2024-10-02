@@ -111,5 +111,4 @@ jobs:
         env:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/
-          NPM_CONFIG_PROVENANCE: "true"
         run: npx -p publib@latest publib-npm

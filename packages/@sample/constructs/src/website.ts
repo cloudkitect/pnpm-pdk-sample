@@ -6,7 +6,7 @@ export class Website extends Construct {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    new Bucket(this, 'Bucket', {
+    new Bucket(this, 'Bucket1', {
       versioned: true,
     });
 

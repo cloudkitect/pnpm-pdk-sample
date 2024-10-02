@@ -8,7 +8,7 @@ import {NpmAccess} from "projen/lib/javascript";
 
 const project = new monorepo.MonorepoTsProject({
   devDeps: ["@aws/pdk"],
-  name: "pnpm-pdk-sample",
+  name: "@cloudkitect/pnpm-pdk-sample",
   packageManager: javascript.NodePackageManager.PNPM,
   pnpmVersion: "8",
   github: true,
@@ -16,7 +16,8 @@ const project = new monorepo.MonorepoTsProject({
   releaseToNpm: true,
   depsUpgrade: false,
   projenrcTs: true,
-  npmAccess: NpmAccess.PUBLIC,
+  npmAccess: NpmAccess.RESTRICTED,
+  npmProvenance: false,
   npmRegistryUrl: 'https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/',
   codeArtifactOptions: {
     roleToAssume: 'arn:aws:iam::053336355397:role/GithubRole-RepositoryPublisherRole-Ou627tXHJL0P',
