@@ -18,6 +18,7 @@ const project = new monorepo.MonorepoTsProject({
   projenrcTs: true,
   npmAccess: NpmAccess.RESTRICTED,
   npmProvenance: false,
+  majorVersion: 1,
   npmRegistryUrl: 'https://cloudkitect-053336355397.d.codeartifact.us-east-1.amazonaws.com/npm/cloudkitect-artifacts/',
   codeArtifactOptions: {
     roleToAssume: 'arn:aws:iam::053336355397:role/GithubRole-RepositoryPublisherRole-Ou627tXHJL0P',
